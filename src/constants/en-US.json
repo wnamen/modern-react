@@ -1,0 +1,10 @@
+{
+  "home": {
+    "welcome": "Welcome to Modern React!"
+  },
+  "notFound": {
+    "404": "404",
+    "backHome": "Back to Home",
+    "doesNotExist": "The Requested Page Does Not Exist"
+  }
+}

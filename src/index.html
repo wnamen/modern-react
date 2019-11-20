@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <title>Modern React</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <style>
+      #initial-loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        background: #ffffff;
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        transition: opacity 0.2s ease-out;
+      }
+
+      #initial-loader .initial-loader-logo {
+        margin-bottom: 100px;
+      }
+
+      #initial-loader .initial-loader-text {
+        padding-top: 10px;
+        color: #5c5c5c;
+        font-family: 'Barlow', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial,
+          sans-serif;
+        font-size: 12px;
+      }
+
+      @keyframes indeterminate1 {
+        0% {
+          left: -35%;
+          right: 100%;
+        }
+
+        60% {
+          left: 100%;
+          right: -90%;
+        }
+
+        100% {
+          left: 100%;
+          right: -90%;
+        }
+      }
+
+      @keyframes indeterminate2 {
+        0% {
+          left: -200%;
+          right: 100%;
+        }
+
+        60% {
+          left: 107%;
+          right: -8%;
+        }
+
+        100% {
+          left: 107%;
+          right: -8%;
+        }
+      }
+
+      .initial-loader-bar {
+        color: #434a67;
+        display: block;
+        font-family: Barlow !important;
+        box-sizing: inherit;
+        overflow: hidden;
+        position: relative;
+        background-color: #f1f4fb;
+        margin: 8px 0;
+        border-radius: 3px;
+        height: 4px;
+        width: 425px;
+      }
+
+      .loader-bar1 {
+        color: #434a67;
+        font-family: Barlow !important;
+        box-sizing: inherit;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        transition: transform 0.2s linear;
+        transform-origin: left;
+        width: auto;
+        animation: indeterminate1 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395)
+          infinite;
+        background-color: rgb(77, 161, 255);
+      }
+
+      .loader-bar2 {
+        color: #434a67;
+        font-family: Barlow !important;
+        box-sizing: inherit;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        transition: transform 0.2s linear;
+        transform-origin: left;
+        width: auto;
+        animation: indeterminate2 2.1s cubic-bezier(0.165, 0.84, 0.44, 1)
+          infinite;
+        animation-delay: 1.15s;
+        background-color: rgb(77, 161, 255);
+      }
+
+      body {
+        margin: 0;
+      }
+
+      body.loading {
+        overflow: hidden !important;
+      }
+
+      body.loaded #initial-loader {
+        opacity: 0;
+      }
+    </style>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="static/favicons/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="static/favicons/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="static/favicons/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="static/favicons/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="static/favicons/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="static/favicons/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="static/favicons/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="static/favicons/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="static/favicons/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="36x36"
+      href="static/favicons/android-icon-36x36.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="static/favicons/android-icon-48x48.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="72x72"
+      href="static/favicons/android-icon-72x72.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="static/favicons/android-icon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="144x144"
+      href="static/favicons/android-icon-144x144.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="static/favicons/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="70x70"
+      href="static/favicons/ms-icon-70x70.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="144x144"
+      href="static/favicons/ms-icon-144x144.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="150x150"
+      href="static/favicons/ms-icon-150x150.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="310x310"
+      href="static/favicons/ms-icon-310x310.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="static/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="static/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="static/favicons/favicon-96x96.png"
+    />
+    <link rel="manifest" href="static/manifest.json" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Barlow:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <div id="initial-loader">
+
+      <div class="initial-loader-bar">
+        <div class="loader-bar1"></div>
+        <div class="loader-bar2"></div>
+      </div>
+
+      <div class="initial-loader-text">
+        Loading. Please Wait.
+      </div>
+    </div>
+  </body>
+</html>
